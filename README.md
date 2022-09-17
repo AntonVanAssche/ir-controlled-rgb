@@ -30,6 +30,13 @@ $ arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:uno ir-controlled-rgb  #
 
 **NOTE**: don't forget to update the permissions of `/dev/ttyACM0` (`sudo chmod a+rw /dev/ttyACM0`).
 
+## Problem(s) I encountered
+
+I don't know exactly, but for some reason the IR library caused the `analogWrite` method to stop working properly from time to time.
+The problem especially occured when the RGB value did not contain `255`, `0`, or `125`.
+This caused the program to deadlock itself when you press a button on the remote, after a bit of testing and rewiring the electrical circuit seems to have fixed the problem.
+Although I'm still not entirely sure what caused this issue.
+
 ## Electrical scheme
 
 ![Electrical Scheme](./schemes/electrical.jpg)
